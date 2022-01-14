@@ -10,7 +10,9 @@ def createDeck():
   ranks = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
   suits = ['C','D','H','S']
   deck = []
-  
+  for i in ranks:
+    for x in suits:
+      deck.append(f"{i+x}")
   return deck
   
   '''
@@ -20,9 +22,9 @@ def createDeck():
 
 def main():
   deck = createDeck()
-  assert "JH" in deck 
-  assert "AC" in deck 
-  assert "TD" in deck 
+  assert ("JH" in deck) 
+  assert ("AC" in deck) 
+  assert ("TD" in deck) 
   assert len(deck) == 52
   
 if __name__ == "__main__":
