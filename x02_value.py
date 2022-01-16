@@ -24,14 +24,22 @@ def cardvalue(a):
 def split(word):
   return list(word)
 def value(hand):
-  if len(hand) == 2:
-    list1 = []
-    for i in hand:
-      i = split(i)
-      final = cardvalue(i[0])
-      list1.append(final)
-    list1 = sum(list1)
-    return list1
+  list1 = []
+  for i in hand:
+    i = split(i)
+    final = cardvalue(i[0])
+    list1.append(final)
+  if list1[0] == [1,11]:
+    list1[0][0] += list1[1] + list1[2]
+    list1[0][1] += list1[1] + list1[2]
+    list1.pop()
+    list1.pop()
+    finallist = [list1[0][0],list1[0][1]]
+    return finallist
+  else:
+    return sum(list1)
+
+
 
 
 def main():
@@ -41,4 +49,4 @@ def main():
   assert value(['KC','6S','QD']) == 26
 
 if __name__ == "__main__":
-  print(value(['KH','TD']))
+  main()
