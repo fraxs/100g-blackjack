@@ -1,5 +1,3 @@
-#!python3
-
 def cardvalue(a):
   if a == '2':
     return 2
@@ -28,8 +26,7 @@ def value(hand):
   for i in hand:
     i = split(i)
     final = cardvalue(i[0])
-    list1.append(final)
-  if list1[0] == [1,11]:
+  if final == [1,11]:
     list1[0][0] += list1[1] + list1[2]
     list1[0][1] += list1[1] + list1[2]
     list1.pop()
@@ -37,16 +34,12 @@ def value(hand):
     finallist = [list1[0][0],list1[0][1]]
     return finallist
   else:
+    list1.append(final)
     return sum(list1)
-
-
-
-
 def main():
   assert value(['AH','3D','4S']) ==[8,18]
   assert value(['KH','TD']) == 20
   assert value(['3D','8H']) == 11
   assert value(['KC','6S','QD']) == 26
-
 if __name__ == "__main__":
   main()

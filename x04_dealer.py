@@ -1,28 +1,26 @@
 #!python3
-
+from x02_value import *
 '''
 In Blackjack, the dealer always must follow the same rules.
 
 1. They will stand pat (not take new cards) if their score is over 16
 2. They will automatically take a new card if their score is less than 17
 '''
-
+import random
 def dealer(deck):
   dealer = []
   score = 0
-  ''' 
-  inputs:
-  list deck: contains a shuffled list of cards
-  return:
-  list of lists:
-  list[0] : the dealer's hand
-  list[1] : the dealer's count
-  list[2] : the remaining deck
+  for i in range(len(deck)):
+    dealer.append(deck[i])
+    score = value(dealer)
+    if score > 16:
+      for i in dealer:
+        deck.remove(i)
+      break
+
   
-  function will keep drawing a card from the deck until they have a score > 16
-  You may need to use the function in problem 2 to count the score
-  it will then return a list
-  '''
+  print([dealer,score])
+
   
   return [ dealer , score , deck ]
 
@@ -31,4 +29,6 @@ def main():
   run1 = dealer(deck)
   assert dealer(deck) == [['3C', '3S', '8S', '3D'], 17, run1[2] ]
   run2 = dealer( run1[2] )
-  assert dealer(run1[2]) == [['AC', '9H'], 20, run2[2] )
+  assert dealer(run1[2]) == [['AC', '9H'], 20, run2[2] ]
+
+main()
